@@ -1,0 +1,23 @@
+# DO NOT CHANGE THIS FILE!!!
+# CHANGED THIS SCRIPT -> YOUR SUBMISSION IS NOT ACCEPTED
+image: sftlab:latest
+
+build:
+  stage: build
+  tags:
+    - docker
+  script: make
+  artifacts:
+    paths:
+      - ./fputs_wrapper.so
+    expire_in: 10 mins
+
+test:
+  stage: test
+  tags:
+    - docker
+  script:
+    - /grader/run_grader.sh $(pwd) lab-4-wrapper
+
+# DO NOT CHANGE THIS FILE!!!
+# CHANGED THIS SCRIPT -> YOUR SUBMISSION IS NOT ACCEPTED

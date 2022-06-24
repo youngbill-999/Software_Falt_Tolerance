@@ -1,0 +1,36 @@
+# DO NOT CHANGE THIS FILE!!!
+# CHANGED THIS SCRIPT -> YOUR SUBMISSION IS NOT ACCEPTED
+image: sftlab:latest
+
+build rcopy:
+  stage: build
+  tags:
+    - docker
+    - virtual
+  script: make rcopy
+  artifacts:
+    paths:
+      - rcopy/
+    expire_in: 30 mins
+
+build mystack:
+  stage: build
+  tags:
+    - docker
+    - virtual
+  script: make mystack
+  artifacts:
+    paths:
+      - mystack/
+    expire_in: 30 mins
+
+test:
+  stage: test
+  tags:
+    - docker
+    - virtual
+  script:
+    - /grader/run_grader.sh $(pwd) lab-2-exception
+
+# DO NOT CHANGE THIS FILE!!!
+# CHANGED THIS SCRIPT -> YOUR SUBMISSION IS NOT ACCEPTED

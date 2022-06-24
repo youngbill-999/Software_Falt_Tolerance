@@ -1,0 +1,58 @@
+# DO NOT CHANGE THIS FILE!!!
+# CHANGED THIS SCRIPT -> YOUR SUBMISSION IS NOT ACCEPTED
+image: sftlab:latest
+
+build c:
+  stage: build
+  tags:
+    - docker
+    - virtual
+  script: make c
+  artifacts:
+    paths:
+      - c/rcopy
+    expire_in: 30 mins
+
+build cpp:
+  stage: build
+  tags:
+    - docker
+    - virtual
+  script: make cpp
+  artifacts:
+    paths:
+      - cpp/rcopy
+    expire_in: 30 mins
+
+build java:
+  stage: build
+  tags:
+    - docker
+    - virtual
+  script: make java
+  artifacts:
+    paths:
+      - java/build
+    expire_in: 30 mins
+
+build rdiff:
+  stage: build
+  tags:
+    - docker
+    - virtual
+  script: make rdiff
+  artifacts:
+    paths:
+      - rdiff/rdiff
+    expire_in: 30 mins
+
+test:
+  stage: test
+  tags:
+    - docker
+    - virtual
+  script:
+    - /grader/run_grader.sh $(pwd) lab-1-rcopy
+
+# DO NOT CHANGE THIS FILE!!!
+# CHANGED THIS SCRIPT -> YOUR SUBMISSION IS NOT ACCEPTED
